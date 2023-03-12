@@ -1,29 +1,20 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table
 @Data
-public class Staff {
+public class Customer {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
-
-    @Column(name = "code")
-    private String code;
+    private Long id;
 
     @Column(name = "name")
     private String firstName;
@@ -46,26 +37,21 @@ public class Staff {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "nation")
+    private String nation;
+
     @Column(name = "password")
     private String password;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "date_created")
     private Date dateCreated;
 
     @Column(name = "date_updated")
     private Date dateUpdated;
-    @ManyToOne
-    @JoinColumn(name = "store_id", nullable = false)
-    private Store store;
-
-    @ManyToOne
-    @JoinColumn(name = "position_id", nullable = false)
-    private Position position ;
-
 }

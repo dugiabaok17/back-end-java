@@ -1,30 +1,21 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
 @Data
-public class Product {
+public class Color {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
-
-    @Column(name = "code")
-    private String code;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -35,7 +26,6 @@ public class Product {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "color")
     private Set<ProductDetails> listProductDetailsSet;
-
 }

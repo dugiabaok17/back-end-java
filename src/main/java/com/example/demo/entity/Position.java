@@ -1,13 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
@@ -15,16 +13,9 @@ import java.util.UUID;
 public class Position {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
-
-    @Column(name = "code")
-    private String code;
+    private Long id;
 
     @Column(name = "name")
     private String name;

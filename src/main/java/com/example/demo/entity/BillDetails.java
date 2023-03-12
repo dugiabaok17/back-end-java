@@ -1,14 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
@@ -16,13 +13,9 @@ import java.util.UUID;
 public class BillDetails {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @Column(name = "quantity")
     private Integer quantity;

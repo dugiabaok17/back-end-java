@@ -1,14 +1,12 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
@@ -16,13 +14,9 @@ import java.util.UUID;
 public class ProductDetails {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @Column(name = "warranty_year")
     private Integer warrantyYear;
@@ -46,19 +40,19 @@ public class ProductDetails {
     private Date dateUpdated;
 
     @ManyToOne
-    @JoinColumn(name = "product_id",nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "producer_id",nullable = false)
+    @JoinColumn(name = "producer_id", nullable = false)
     private Producer producer;
 
     @ManyToOne
-    @JoinColumn(name = "color_id",nullable = false)
+    @JoinColumn(name = "color_id", nullable = false)
     private Color color;
 
     @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @OneToMany(mappedBy = "productDetails")
