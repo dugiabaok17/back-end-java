@@ -15,11 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,10 +59,11 @@ public class IAdStaffService implements AdStaffService {
     @Override
     public ResponseEntity<ResponseObject> createStaff(@RequestBody StaffRequest staffRequest) {
         List<Staff> foundStaffs = staffRepository.findByEmail(staffRequest.getEmail());
-        if (foundStaffs.size() > 0) {
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).
-                    body(new ResponseObject("false", "Staff email already taken ", -1, ""));
-        }
+//        if (foundStaffs.size() > 0) {
+//            System.out.println(foundStaffs.size());
+//            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).
+//                    body(new ResponseObject("false", "Staff email already taken ", -1, ""));
+//        }
 
         Staff staff = new Staff();
         staff.setFirstName(staffRequest.getName());
@@ -83,8 +80,9 @@ public class IAdStaffService implements AdStaffService {
         Store store = new Store();
         store.setId(storeRepository.findByName(staffRequest.getStoreName()).get(0).getId());
         staff.setStore(store);
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).
-                body(new ResponseObject("ok", "Insert staff successfully ", 0, staffRepository.save(staff)));
+        staffRepository.save(staff);
+        return ResponseEntity.status(HttpStatus.OK).
+                body(new ResponseObject("ok", "Insert staff successfully ", 0, "" ));
 
     }
 
