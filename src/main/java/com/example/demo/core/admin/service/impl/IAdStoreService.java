@@ -1,7 +1,10 @@
 package com.example.demo.core.admin.service.impl;
 
 import com.example.demo.core.admin.model.response.ResponseObject;
+import com.example.demo.core.admin.model.response.StoreResponse;
+import com.example.demo.core.admin.repository.AdStoreRepository;
 import com.example.demo.core.admin.service.AdStoreService;
+import com.example.demo.entity.Staff;
 import com.example.demo.entity.Store;
 import com.example.demo.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,14 @@ import java.util.List;
 @Service
 public class IAdStoreService implements AdStoreService {
 
-    private StoreRepository storeRepository;
+    private final StoreRepository storeRepository;
+    private final AdStoreRepository adStoreRepository;
+
 
     @Autowired
-    public IAdStoreService(StoreRepository storeRepository) {
+    public IAdStoreService(StoreRepository storeRepository,AdStoreRepository adStoreRepository) {
         this.storeRepository = storeRepository;
+        this.adStoreRepository = adStoreRepository;
     }
 
     @Override
@@ -32,8 +38,12 @@ public class IAdStoreService implements AdStoreService {
     }
 
     @Override
-    public ResponseEntity<ResponseObject> createStore(@RequestBody Store store) {
+    public List<StoreResponse> getStoreName() {
+        return adStoreRepository.getStoreName();
+    }
 
+    @Override
+    public ResponseEntity<ResponseObject> createStore(@RequestBody Store store) {
         Store s = new Store();
         s.setAddress(store.getAddress());
         s.setCity(store.getCity());

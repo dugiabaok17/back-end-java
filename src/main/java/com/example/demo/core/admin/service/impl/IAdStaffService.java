@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,12 +61,11 @@ public class IAdStaffService implements AdStaffService {
     @Override
     public ResponseEntity<ResponseObject> createStaff(@RequestBody StaffRequest staffRequest) {
         List<Staff> foundStaffs = staffRepository.findByEmail(staffRequest.getEmail());
-//        if (foundStaffs.size() > 0) {
-//            System.out.println(foundStaffs.size());
-//            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).
-//                    body(new ResponseObject("false", "Staff email already taken ", -1, ""));
-//        }
-
+        if (foundStaffs.size() > 0) {
+            System.out.println(foundStaffs.size());
+            return ResponseEntity.status(HttpStatus.OK).
+                    body(new ResponseObject("false", "Staff email already taken ", -1, ""));
+        }
         Staff staff = new Staff();
         staff.setFirstName(staffRequest.getName());
         staff.setMiddleName(staffRequest.getMiddleName());
@@ -74,6 +75,7 @@ public class IAdStaffService implements AdStaffService {
         staff.setPhoneNumber(staffRequest.getPhoneNumber());
         staff.setEmail(staffRequest.getEmail());
         staff.setDateOfBirth(staffRequest.getDateOfBirth());
+        staff.setDateCreated(new Date(System.currentTimeMillis()));
         Position position = new Position();
         position.setId(positionRepository.findByName(staffRequest.getPositionName()).get(0).getId());
         staff.setPosition(position);
@@ -83,7 +85,6 @@ public class IAdStaffService implements AdStaffService {
         staffRepository.save(staff);
         return ResponseEntity.status(HttpStatus.OK).
                 body(new ResponseObject("ok", "Insert staff successfully ", 0, "" ));
-
     }
 
     @Override
@@ -115,9 +116,9 @@ public class IAdStaffService implements AdStaffService {
 
     @Override
     public ResponseEntity<ResponseObject> deleteStaff(Long id) {
-        Boolean exists = staffRepository.existsById(id);
+        boolean exists = staffRepository.existsById(id);
         if (exists) {
-            staffRepository.deleteById(id);
+            staffRepository.updateStatus(id);
             return ResponseEntity.status(HttpStatus.OK).body(
                     new ResponseObject("ok", "Delete staff successfully", 0, "")
             );
