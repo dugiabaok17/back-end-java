@@ -21,6 +21,8 @@ public class StaffRequest {
 
     private String phoneNumber;
 
+    private Integer status;
+
     private String email;
 
     private String storeName;

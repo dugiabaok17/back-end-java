@@ -76,6 +76,7 @@ public class IAdStaffService implements AdStaffService {
         staff.setEmail(staffRequest.getEmail());
         staff.setDateOfBirth(staffRequest.getDateOfBirth());
         staff.setDateCreated(new Date(System.currentTimeMillis()));
+        staff.setStatus(1);
         Position position = new Position();
         position.setId(positionRepository.findByName(staffRequest.getPositionName()).get(0).getId());
         staff.setPosition(position);
@@ -99,10 +100,12 @@ public class IAdStaffService implements AdStaffService {
             updateStaff.get().setPhoneNumber(staffRequest.getPhoneNumber());
             updateStaff.get().setEmail(staffRequest.getEmail());
             updateStaff.get().setDateOfBirth(staffRequest.getDateOfBirth());
+            updateStaff.get().setStatus(staffRequest.getStatus());
             Position position = new Position();
             position.setId(positionRepository.findByName(staffRequest.getPositionName()).get(0).getId());
             updateStaff.get().setPosition(position);
             Store store = new Store();
+            System.out.println(storeRepository.findByName(staffRequest.getStoreName()).get(0).getId());
             store.setId(storeRepository.findByName(staffRequest.getStoreName()).get(0).getId());
             updateStaff.get().setStore(store);
             staffRepository.save(updateStaff.get());
