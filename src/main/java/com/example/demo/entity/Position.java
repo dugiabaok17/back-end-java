@@ -26,6 +26,9 @@ public class Position {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "position")
-    private Set<Staff> listStaffs;
+    @Column(name = "status")
+    private Integer status;
+
+//    @OneToMany(mappedBy = "position",fetch = FetchType.EAGER)
+//    private Set<Staff> listStaffs;
 }

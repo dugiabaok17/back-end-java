@@ -98,9 +98,10 @@ public class IAdStaffService implements AdStaffService {
             updateStaff.get().setGender(staffRequest.getGender());
             updateStaff.get().setAddress(staffRequest.getAddress());
             updateStaff.get().setPhoneNumber(staffRequest.getPhoneNumber());
-            updateStaff.get().setEmail(staffRequest.getEmail());
+            updateStaff.get().setDateUpdated(new Date(System.currentTimeMillis()));
+//            updateStaff.get().setEmail(staffRequest.getEmail());
             updateStaff.get().setDateOfBirth(staffRequest.getDateOfBirth());
-            updateStaff.get().setStatus(staffRequest.getStatus());
+//            updateStaff.get().setStatus(staffRequest.getStatus());
             Position position = new Position();
             position.setId(positionRepository.findByName(staffRequest.getPositionName()).get(0).getId());
             updateStaff.get().setPosition(position);
@@ -129,6 +130,4 @@ public class IAdStaffService implements AdStaffService {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                 new ResponseObject("failed", "Cannot find staff to delete", -1, ""));
     }
-
-
 }
