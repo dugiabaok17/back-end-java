@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface AdStoreRepository extends JpaRepository<StoreResponse,Long> {
 
-    @Query(value = "select s.id, s.name store_name from store s",nativeQuery = true)
+    @Query(value = "select s.id, s.name store_name from store s where s.status = 1",nativeQuery = true)
     List<StoreResponse> getStoreName();
 }

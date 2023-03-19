@@ -31,7 +31,21 @@ public class StoreController {
 
     @GetMapping("/name")
     private List<StoreResponse> getStoreName() {
-        adStoreService.getStoreName().forEach(data -> System.out.println(data));
         return adStoreService.getStoreName();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseObject> findByStoreId(@PathVariable Long id) {
+        return adStoreService.findByStore(id);
+    }
+
+    @PutMapping("/{id}")
+    private ResponseEntity<ResponseObject> updateStore(@PathVariable Long id,@RequestBody Store store) {
+        return adStoreService.updateStore(store,id);
+    }
+
+    @DeleteMapping("/{id}")
+    private ResponseEntity<ResponseObject> deletePosition(@PathVariable Long id) {
+        return adStoreService.deleteStore(id);
     }
 }

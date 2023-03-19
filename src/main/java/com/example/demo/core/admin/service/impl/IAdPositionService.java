@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +32,9 @@ public class IAdPositionService implements AdPositionService {
         Optional<Position> foundPosition = positionRepository.findById(id);
         return foundPosition.isPresent() ?
                 ResponseEntity.status(HttpStatus.OK).body(
-                        new ResponseObject("ok","Query store successfully",0, foundPosition)
+                        new ResponseObject("ok","Query position successfully",0, foundPosition)
                 ) :   ResponseEntity.status(HttpStatus.NOT_FOUND).
-                body(new ResponseObject("false", "Cannot find staff with id = " + id, -1, ""));
+                body(new ResponseObject("false", "Cannot find position with id = " + id, -1, ""));
     }
 
     @Override
@@ -50,6 +51,7 @@ public class IAdPositionService implements AdPositionService {
     public ResponseEntity<ResponseObject> createPosition(Position position) {
         Position p = new Position();
         p.setName(position.getName());
+        p.setDateCreated(new Date(System.currentTimeMillis()));
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponseObject("ok","insert successfully",0,positionRepository.save(p))
         );
@@ -60,6 +62,7 @@ public class IAdPositionService implements AdPositionService {
         Optional<Position> p = positionRepository.findById(id);
          if(p.isPresent()) {
             p.get().setName(position.getName());
+            p.get().setDateUpdated(new Date(System.currentTimeMillis()));
              return ResponseEntity.status(HttpStatus.OK).body(
                      new ResponseObject("ok", "update successfully",0,positionRepository.save(p.get())));
          }

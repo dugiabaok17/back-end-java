@@ -35,6 +35,9 @@ public class Store {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "store",fetch = FetchType.LAZY)
-    private Set<Staff> listStaffs;
+    @Column(name = "status")
+    private Integer status;
+
+//    @OneToMany(mappedBy = "store",fetch = FetchType.LAZY)
+//    private Set<Staff> listStaffs;
 }

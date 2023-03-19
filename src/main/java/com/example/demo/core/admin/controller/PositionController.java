@@ -38,13 +38,13 @@ public class PositionController {
     }
 
     @GetMapping("/name")
-    private List<PositionResponse> getStoreName() {
+    private List<PositionResponse> getPositionName() {
         adPositionService.getPositionName().forEach(data -> System.out.println(data));
         return adPositionService.getPositionName();
     }
 
     @PostMapping
-    private ResponseEntity<ResponseObject> createStore(@RequestBody Position position) {
+    private ResponseEntity<ResponseObject> createPosition(@RequestBody Position position) {
         return adPositionService.createPosition(position);
     }
 
