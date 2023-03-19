@@ -26,7 +26,10 @@ public class Product {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "product")
-    private Set<ProductDetails> listProductDetailsSet;
+    @Column(name = "status")
+    private Integer status;
+
+//    @OneToMany(mappedBy = "product")
+//    private Set<ProductDetails> listProductDetailsSet;
 
 }

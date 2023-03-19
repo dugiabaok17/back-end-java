@@ -39,7 +39,6 @@ public class PositionController {
 
     @GetMapping("/name")
     private List<PositionResponse> getPositionName() {
-        adPositionService.getPositionName().forEach(data -> System.out.println(data));
         return adPositionService.getPositionName();
     }
 

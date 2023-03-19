@@ -45,7 +45,7 @@ public class StoreController {
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<ResponseObject> deletePosition(@PathVariable Long id) {
+    private ResponseEntity<ResponseObject> deleteStore(@PathVariable Long id) {
         return adStoreService.deleteStore(id);
     }
 }
