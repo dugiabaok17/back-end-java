@@ -26,6 +26,9 @@ public class Producer {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "producer")
-    private Set<ProductDetails> listProductDetailsSet;
+    @Column(name = "status")
+    private Integer status;
+
+//    @OneToMany(mappedBy = "producer")
+//    private Set<ProductDetails> listProductDetailsSet;
 }
