@@ -3,7 +3,6 @@ package com.example.demo.core.admin.service.impl;
 import com.example.demo.core.admin.model.response.ResponseObject;
 import com.example.demo.core.admin.service.AdProducerService;
 import com.example.demo.entity.Producer;
-import com.example.demo.entity.Product;
 import com.example.demo.repository.ProducerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

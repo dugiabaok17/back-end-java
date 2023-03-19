@@ -26,6 +26,9 @@ public class Color {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(mappedBy = "color")
-    private Set<ProductDetails> listProductDetailsSet;
+    @Column(name = "status")
+    private Integer status;
+
+//    @OneToMany(mappedBy = "color")
+//    private Set<ProductDetails> listProductDetailsSet;
 }
