@@ -3,9 +3,7 @@ package com.example.demo.core.admin.controller;
 
 import com.example.demo.core.admin.model.response.ResponseObject;
 import com.example.demo.core.admin.service.AdProducerService;
-import com.example.demo.core.admin.service.AdProductService;
 import com.example.demo.entity.Producer;
-import com.example.demo.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +15,7 @@ import java.util.List;
 @RequestMapping("api/v1/producer")
 public class ProducerController {
 
-    private AdProducerService adProducerService;
+    private final AdProducerService adProducerService;
 
     @Autowired
     public ProducerController(AdProducerService adProducerService) {
@@ -30,10 +28,10 @@ public class ProducerController {
     }
 
 
-    @GetMapping("/name")
-    private List<String> getProducerName() {
-        return adProducerService.getProducerName();
-    }
+//    @GetMapping("/name")
+//    private List<String> getProducerName() {
+//        return adProducerService.getProducerName();
+//    }
 
 
     @GetMapping("/{id}")

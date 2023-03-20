@@ -42,8 +42,8 @@ public class IAdCategoryService implements AdCategoryService {
     }
 
     @Override
-    public List<String> getCategoryName() {
-        return categoryRepository.findAll().stream().filter(data -> data.getStatus() == 1).map(Category::getName).toList();
+    public Long getCategoryName(String name) {
+        return categoryRepository.findCategoryByName(name).getId();
     }
 
     @Override

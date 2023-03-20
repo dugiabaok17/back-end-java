@@ -16,4 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Query(value = "update product p set p.status = 0 where p.id = :id", nativeQuery = true)
     void updateStatus(@Param("id") Long id);
+
+    Product findProductByName(String name);
 }

@@ -12,7 +12,7 @@ public interface AdColorService {
 
     ResponseEntity<ResponseObject> findByColorId(Long id);
 
-    List<String> getColorName();
+    Long getColorName(String name);
 
     ResponseEntity<ResponseObject> createColor(Color color);
 

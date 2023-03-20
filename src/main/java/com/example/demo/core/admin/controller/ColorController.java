@@ -6,6 +6,7 @@ import com.example.demo.core.admin.service.AdColorService;
 import com.example.demo.entity.Color;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,10 +29,10 @@ public class ColorController {
     }
 
 
-    @GetMapping("/name")
-    private List<String> getColorName() {
-        return adColorService.getColorName();
-    }
+//    @GetMapping("/name/{name}")
+//    private Color getColorName(@PathVariable String name) {
+//        return adColorService.getColorName(name);
+//    }
 
 
     @GetMapping("/{id}")

@@ -54,4 +54,7 @@ public class Customer {
 
     @Column(name = "date_updated")
     private Date dateUpdated;
+
+    @Column(name = "status")
+    private Integer status;
 }

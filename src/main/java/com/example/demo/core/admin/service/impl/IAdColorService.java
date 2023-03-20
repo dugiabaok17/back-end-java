@@ -41,8 +41,8 @@ public class IAdColorService implements AdColorService {
     }
 
     @Override
-    public List<String> getColorName() {
-        return colorRepository.findAll().stream().filter(data -> data.getStatus() == 1).map(Color::getName).toList();
+    public Long getColorName(String name) {
+        return colorRepository.findColorByName(name).getId();
     }
 
     @Override

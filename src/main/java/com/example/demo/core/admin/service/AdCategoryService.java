@@ -12,7 +12,7 @@ public interface AdCategoryService {
 
     ResponseEntity<ResponseObject> findByCategoryId(Long id);
 
-    List<String> getCategoryName();
+    Long getCategoryName(String name);
 
     ResponseEntity<ResponseObject> createCategory(Category category);
 

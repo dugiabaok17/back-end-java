@@ -42,8 +42,8 @@ public class IAdProductService implements AdProductService {
     }
 
     @Override
-    public List<String> getProductName() {
-        return productRepository.findAll().stream().filter(data -> data.getStatus() == 1).map(Product::getName).toList();
+    public Long getProductName(String name) {
+        return productRepository.findProductByName(name).getId();
     }
 
     @Override

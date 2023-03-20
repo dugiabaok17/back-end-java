@@ -2,11 +2,8 @@ package com.example.demo.core.admin.controller;
 
 
 import com.example.demo.core.admin.model.response.ResponseObject;
-import com.example.demo.core.admin.model.response.StoreResponse;
 import com.example.demo.core.admin.service.AdProductService;
-import com.example.demo.core.admin.service.AdStoreService;
 import com.example.demo.entity.Product;
-import com.example.demo.entity.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +15,7 @@ import java.util.List;
 @RequestMapping("api/v1/product")
 public class ProductController {
 
-    private AdProductService adProductService;
+    private final AdProductService adProductService;
 
     @Autowired
     public ProductController(AdProductService adProductService) {
@@ -31,10 +28,10 @@ public class ProductController {
     }
 
 
-    @GetMapping("/name")
-    private List<String> getProductName() {
-        return adProductService.getProductName();
-    }
+//    @GetMapping("/name")
+//    private List<String> getProductName() {
+//        return adProductService.getProductName();
+//    }
 
 
     @GetMapping("/{id}")

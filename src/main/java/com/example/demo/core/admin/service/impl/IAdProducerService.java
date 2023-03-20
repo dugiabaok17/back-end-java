@@ -40,8 +40,8 @@ public class IAdProducerService implements AdProducerService {
     }
 
     @Override
-    public List<String> getProducerName() {
-        return producerRepository.findAll().stream().filter(data -> data.getStatus() == 1).map(Producer::getName).toList();
+    public Long getProducerName(String name) {
+        return producerRepository.findProducerByName(name).getId();
     }
 
     @Override

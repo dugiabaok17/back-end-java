@@ -11,7 +11,7 @@ public interface AdProductService {
 
     ResponseEntity<ResponseObject> findByProductId(Long id);
 
-    List<String> getProductName();
+    Long getProductName(String name);
 
     ResponseEntity<ResponseObject> createProduct(Product product);
 

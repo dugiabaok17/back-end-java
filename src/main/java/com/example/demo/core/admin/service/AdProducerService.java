@@ -12,7 +12,7 @@ public interface AdProducerService {
 
     ResponseEntity<ResponseObject> findByProducerId(Long id);
 
-    List<String> getProducerName();
+    Long getProducerName(String name);
 
     ResponseEntity<ResponseObject> createProducer(Producer producer);
 

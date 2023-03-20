@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class IAdStoreService implements AdStoreService {
@@ -31,7 +32,7 @@ public class IAdStoreService implements AdStoreService {
 
     @Override
     public List<Store> findAllStore() {
-        return storeRepository.findAll();
+        return storeRepository.findAll().stream().filter(store -> store.getStatus() == 1).collect(Collectors.toList());
     }
 
     @Override
@@ -54,6 +55,7 @@ public class IAdStoreService implements AdStoreService {
         Store s = new Store();
         s.setAddress(store.getAddress());
         s.setDateCreated(new Date(System.currentTimeMillis()));
+        s.setStatus(1);
         s.setCity(store.getCity());
         s.setName(store.getName());
         s.setNation(store.getNation());

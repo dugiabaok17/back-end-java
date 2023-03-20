@@ -29,6 +29,11 @@ public class StoreController {
         return adStoreService.createStore(store);
     }
 
+    @GetMapping
+    private List<Store> getAllStore() {
+       return adStoreService.findAllStore();
+    }
+
     @GetMapping("/name")
     private List<StoreResponse> getStoreName() {
         return adStoreService.getStoreName();

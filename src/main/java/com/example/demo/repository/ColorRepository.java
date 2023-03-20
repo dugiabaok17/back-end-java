@@ -13,4 +13,6 @@ public interface ColorRepository extends JpaRepository<Color, Long> {
     @Transactional
     @Query(value = "update color c set c.status = 0 where c.id = :id", nativeQuery = true)
     void updateStatus(@Param("id") Long id);
+
+    Color findColorByName(String name);
 }

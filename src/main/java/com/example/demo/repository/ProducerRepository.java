@@ -14,4 +14,6 @@ public interface ProducerRepository extends JpaRepository<Producer, Long> {
     @Transactional
     @Query(value = "update producer p set p.status = 0 where p.id = :id", nativeQuery = true)
     void updateStatus(@Param("id") Long id);
+
+    Producer findProducerByName(String name);
 }

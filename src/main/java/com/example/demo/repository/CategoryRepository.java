@@ -13,4 +13,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Transactional
     @Query(value = "update category c set c.status = 0 where c.id = :id", nativeQuery = true)
     void updateStatus(@Param("id") Long id);
+
+    Category findCategoryByName(String name);
 }

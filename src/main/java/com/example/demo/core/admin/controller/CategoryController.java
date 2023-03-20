@@ -30,10 +30,10 @@ public class CategoryController {
     }
 
 
-    @GetMapping("/name")
-    private List<String> getCategoryName() {
-        return adCategoryService.getCategoryName();
-    }
+//    @GetMapping("/name")
+//    private List<String> getCategoryName() {
+//        return adCategoryService.getCategoryName();
+//    }
 
 
     @GetMapping("/{id}")
