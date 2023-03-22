@@ -29,10 +29,11 @@ public class ColorController {
     }
 
 
-//    @GetMapping("/name/{name}")
-//    private Color getColorName(@PathVariable String name) {
-//        return adColorService.getColorName(name);
-//    }
+    @GetMapping("/name")
+    private List<String> getColorName() {
+        return adColorService.findAllColor().stream().filter(data -> data.getStatus() == 1).
+                map(name -> name.getName()).toList();
+    }
 
 
     @GetMapping("/{id}")

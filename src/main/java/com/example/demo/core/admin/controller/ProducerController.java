@@ -28,10 +28,11 @@ public class ProducerController {
     }
 
 
-//    @GetMapping("/name")
-//    private List<String> getProducerName() {
-//        return adProducerService.getProducerName();
-//    }
+    @GetMapping("/name")
+    private List<String> getProducerName() {
+        return adProducerService.findAllProducer().stream().filter(data -> data.getStatus() == 1).
+                map(name -> name.getName()).toList();
+    }
 
 
     @GetMapping("/{id}")

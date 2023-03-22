@@ -30,10 +30,11 @@ public class CategoryController {
     }
 
 
-//    @GetMapping("/name")
-//    private List<String> getCategoryName() {
-//        return adCategoryService.getCategoryName();
-//    }
+    @GetMapping("/name")
+    private List<String> getCategoryName() {
+        return adCategoryService.findAllCategory().stream().filter(data -> data.getStatus() == 1).
+                map(name -> name.getName()).toList();
+    }
 
 
     @GetMapping("/{id}")

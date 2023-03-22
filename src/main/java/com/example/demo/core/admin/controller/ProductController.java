@@ -28,10 +28,11 @@ public class ProductController {
     }
 
 
-//    @GetMapping("/name")
-//    private List<String> getProductName() {
-//        return adProductService.getProductName();
-//    }
+    @GetMapping("/name")
+    private List<String> getProductName() {
+        return adProductService.findAllProduct().stream().filter(data -> data.getStatus() == 1).
+                map(name -> name.getName()).toList();
+    }
 
 
     @GetMapping("/{id}")

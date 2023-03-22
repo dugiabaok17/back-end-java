@@ -3,8 +3,6 @@ package com.example.demo.core.admin.service.impl;
 import com.example.demo.core.admin.model.response.ResponseObject;
 import com.example.demo.core.admin.service.AdColorService;
 import com.example.demo.entity.Color;
-import com.example.demo.entity.Producer;
-import com.example.demo.entity.Product;
 import com.example.demo.repository.ColorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +40,7 @@ public class IAdColorService implements AdColorService {
 
     @Override
     public Long getColorName(String name) {
-        return colorRepository.findColorByName(name).getId();
+        return colorRepository.findColorByName(name.trim()).getId();
     }
 
     @Override

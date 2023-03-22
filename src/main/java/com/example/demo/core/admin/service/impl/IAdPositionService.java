@@ -44,7 +44,7 @@ public class IAdPositionService implements AdPositionService {
 
     @Override
     public List<Position> findAllPosition() {
-        return positionRepository.findAll();
+        return positionRepository.findAll().stream().filter(data -> data.getStatus() == 1).toList();
     }
 
     @Override
@@ -62,6 +62,7 @@ public class IAdPositionService implements AdPositionService {
         Optional<Position> p = positionRepository.findById(id);
          if(p.isPresent()) {
             p.get().setName(position.getName());
+            p.get().setStatus(1);
             p.get().setDateUpdated(new Date(System.currentTimeMillis()));
              return ResponseEntity.status(HttpStatus.OK).body(
                      new ResponseObject("ok", "update successfully",0,positionRepository.save(p.get())));
